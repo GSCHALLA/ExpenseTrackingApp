@@ -13,7 +13,7 @@
                TextDecorations="None" FontAttributes="Bold" TextColor="Black"/>
 
         <Editor x:Name="budget"
-                Text="{Binding Budget}"
+               
                 Placeholder="Set the budget" PlaceholderColor="Black"
                 HeightRequest="70"/>
         
@@ -26,18 +26,8 @@
             <Button Text="Save" Clicked="OnSaveButtonClicked"/>
             <Button Text="Delete" Grid.Column="1" Clicked="OnDeleteButtonClicked" />
 
-            <ListView x:Name="listView"
-                  Margin="20"
-                  ItemSelected="OnListViewItemSelected">
-
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <TextCell Text="{Binding Name}"
-                               />
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
         </Grid>
     </StackLayout>
 
 </ContentPage>
+<!--Text="{Binding Budget}"-->

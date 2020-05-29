@@ -13,12 +13,12 @@ namespace ExpenseTrackingApp.Models
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ExpenseEntryPage : ContentPage
     {
-       
+
+        public string Budget { get; set; }
         public ExpenseEntryPage()
         {
             InitializeComponent();
 
-           
         }
 
         protected override void OnAppearing()

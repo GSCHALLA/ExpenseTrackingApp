@@ -14,7 +14,9 @@
                 </Grid.RowDefinitions>
 
                 <Button Text="Add Expenses" Clicked="OnAddExpensesClicked" Grid.Row="0"/>
-                <Label Text="ExpenseBudget is : "  TextColor="Black" FontSize="Large" Grid.Row="1"/>
+                <Label Text="{Binding 
+                    Path=Budget,
+                    StringFormat='Budget goal is : {0}'}"  TextColor="Black" FontSize="Large" Grid.Row="1"/>
                 <Editor x:Name="editor" Text="{Binding Name}"/>
 
 

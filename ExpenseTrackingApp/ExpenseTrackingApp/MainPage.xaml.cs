@@ -18,30 +18,38 @@ namespace ExpenseTrackingApp
     {
 
         public static string BudgetSet { get; set; }
-        public static string  BudgetFile { get; set; }
-        
+        public static string BudgetFile { get; set; }
+
+       
+
         public MainPage()
         {
             InitializeComponent();
-            
+
+
         }
 
-       
-        private  void OnSaveButtonClicked(object sender, EventArgs e)
+
+        private async void OnSaveButtonClicked(object sender, EventArgs e)
         {
 
-            var expense = (Expenses)BindingContext;
+            //var expense = (Expenses)BindingContext;
 
-            var expenses = Path.Combine
-                (Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-                $"{Path.GetRandomFileName()}.expense.txt");
-            //File.WriteAllText(expenses, editor.Name);
+            //var expenses = Path.Combine
+            //    (Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+            //    $"{Path.GetRandomFileName()}.expense.txt");
+            ////File.WriteAllText(expenses, editor.Name);
 
-            
-            Navigation.PushModalAsync(new ExpenseEntryPage());
-
-
+            await Navigation.PushModalAsync(new ExpenseEntryPage
+            {
+                BindingContext = new ExpenseEntryData
+                {
+                    Budget = budget.Text
+                }
+            });
         }
+    
+
             private void OnDeleteButtonClicked(object sender, EventArgs e)
             {
 

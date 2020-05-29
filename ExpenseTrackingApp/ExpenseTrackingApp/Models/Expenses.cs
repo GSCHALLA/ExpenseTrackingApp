@@ -13,6 +13,11 @@ namespace ExpenseTrackingApp.Models
         Miscellaneous
 
     }
+    public class ExpenseEntryData
+    {
+        public string Budget { get; set; }
+    }
+
     public class Expenses
     {
         public string FileName { get; set; }
