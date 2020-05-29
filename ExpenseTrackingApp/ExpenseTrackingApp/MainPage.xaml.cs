@@ -32,20 +32,14 @@ namespace ExpenseTrackingApp
 
         private async void OnSaveButtonClicked(object sender, EventArgs e)
         {
-
-            //var expense = (Expenses)BindingContext;
-
-            //var expenses = Path.Combine
-            //    (Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-            //    $"{Path.GetRandomFileName()}.expense.txt");
-            ////File.WriteAllText(expenses, editor.Name);
+            var expenseBudgetPath = Path.Combine
+                (Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+               "ExpenseBudget.txt");
+            File.WriteAllText(expenseBudgetPath, budget.Text);
 
             await Navigation.PushModalAsync(new ExpenseEntryPage
             {
-                BindingContext = new ExpenseEntryData
-                {
-                    Budget = budget.Text
-                }
+                Budget = budget.Text
             });
         }
     

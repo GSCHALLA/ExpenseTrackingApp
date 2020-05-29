@@ -18,11 +18,11 @@ namespace ExpenseTrackingApp.Models
         public ExpenseEntryPage()
         {
             InitializeComponent();
-
         }
 
         protected override void OnAppearing()
         {
+            BudgetLabel.Text = $"BudgetExpense is {Budget}";
             var expenses = new List<Expenses>();
             var files = Directory.EnumerateFiles(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
                 "*.expense.txt");

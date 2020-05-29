@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using ExpenseTrackingApp.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -17,18 +18,21 @@ namespace ExpenseTrackingApp
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
-            
-            var FolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)
-            , "MyExpenses");
+            var expenseBudgetPath = Path.Combine
+                (Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+               "ExpenseBudget.txt");
 
-            if(Directory.Exists(FolderPath))
+            if(File.Exists(expenseBudgetPath))
             {
-                    
+                var budget = File.ReadAllText(expenseBudgetPath);
+                MainPage = new ExpenseEntryPage
+                {
+                    Budget = budget
+                };
             }
             else
             {
-                Directory.CreateDirectory(FolderPath);
+                MainPage = new MainPage();
             }
 
         }
