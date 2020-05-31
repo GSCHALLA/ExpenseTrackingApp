@@ -15,6 +15,7 @@ namespace ExpenseTrackingApp.Models
     {
 
         public string Budget { get; set; }
+        public DateTime SelectedDate { get; set; }
         public ExpenseModel()
         {
             InitializeComponent();
@@ -40,7 +41,7 @@ namespace ExpenseTrackingApp.Models
 
                 Name = nameLabel.Text,
                 Amount = Convert.ToDecimal(amountLabel.Text),
-                //DateOfPurchase = MainDatePicker.
+                DateOfPurchase = SelectedDate,
                 Category = pickerCategory.SelectedItem.ToString()
                 
             };
@@ -68,9 +69,10 @@ namespace ExpenseTrackingApp.Models
 
         private void MainDatePicker_DateSelected(object sender, DateChangedEventArgs e)
         {
-          
+             SelectedDate = e.NewDate;
+
         }
 
-        
+
     }
 }

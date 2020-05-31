@@ -22,7 +22,7 @@
                     <Label Text="Enter the PuchaseDate" FontSize="Large" TextColor="Red"/>
                     <DatePicker x:Name="MainDatePicker" Grid.Row="3" 
                             MinimumDate="1/1/2020"
-                            MaximumDate="12/31/2020"
+                            MaximumDate="12/31/2050"
                             DateSelected="MainDatePicker_DateSelected"/>
 
                 </StackLayout>
@@ -35,7 +35,7 @@
                             <x:String>Travel</x:String>
                             <x:String>Insurance</x:String>
                             <x:String>Utilities</x:String>
-                        <x:String>Other Miscellaneous</x:String>
+                        <x:String>Miscellaneous</x:String>
                     </Picker.Items>
                 </Picker>
                 <StackLayout Orientation="Horizontal" Grid.Row="5" Margin="10,15,10,10" HorizontalOptions="CenterAndExpand">

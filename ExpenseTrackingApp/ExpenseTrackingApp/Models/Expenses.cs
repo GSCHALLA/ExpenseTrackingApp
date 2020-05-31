@@ -30,7 +30,7 @@ namespace ExpenseTrackingApp.Models
 
         public string toString()
         {
-            return $"{Name}\n{Amount}\n{Category}";
+            return $"{Name}\n{Amount}\n{Category}\n{DateOfPurchase}";
         }
 
     }

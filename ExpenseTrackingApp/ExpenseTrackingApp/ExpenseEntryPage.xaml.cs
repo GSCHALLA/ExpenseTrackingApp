@@ -47,7 +47,8 @@ namespace ExpenseTrackingApp
                 {
                     Name = dataSplit[0],
                     Amount = Convert.ToDecimal(dataSplit[1]), 
-                    Category = dataSplit[2]
+                    Category = dataSplit[2],
+                    DateOfPurchase = Convert.ToDateTime(dataSplit[3])
                 };
 
                 expenses.Add(expense);
