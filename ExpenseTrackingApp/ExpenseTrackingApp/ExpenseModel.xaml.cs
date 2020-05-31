@@ -13,26 +13,64 @@ namespace ExpenseTrackingApp.Models
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ExpenseModel : ContentPage
     {
+
+        public string Budget { get; set; }
         public ExpenseModel()
         {
             InitializeComponent();
+
+
+
+            
+
+
         }
+
 
         private async void OnSaveButtonClicked(object sender, EventArgs e)
         {
-            var expenses = (Expenses)BindingContext;
-            var name = Path.Combine(
-                    Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-                    $"{Path.GetRandomFileName()}.expenses.txt");
-            File.WriteAllText(name , editor.Text);
+            var expensePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.
+                LocalApplicationData),
+                $"{Path.GetRandomFileName()}.expenses.txt");
 
-            await Navigation.PopModalAsync();
+
+
+            var expenses = new Expenses
+            {
+
+                Name = nameLabel.Text,
+                Amount = Convert.ToDecimal(amountLabel.Text),
+                //DateOfPurchase = MainDatePicker.
+                Category = pickerCategory.SelectedItem.ToString()
+                
+            };
+
+
+            File.WriteAllText(expensePath, expenses.toString());
+
+
+
+            await Navigation.PushModalAsync(new ExpenseEntryPage
+            {
+                
+                Budget= File.ReadAllText
+               ("data/user/0/com.companyname.expensetrackingapp/files/.local/share/ExpenseBudget.txt")
+
+               
+            }); 
+
         }
 
-        
-        private void OnCancelButtonClicked(object sender, EventArgs e)
+        private void OnDeleteButtonClicked(object sender, EventArgs e)
         {
 
         }
+
+        private void MainDatePicker_DateSelected(object sender, DateChangedEventArgs e)
+        {
+          
+        }
+
+        
     }
 }
