@@ -17,9 +17,6 @@ namespace ExpenseTrackingApp
     public partial class MainPage : ContentPage
     {
 
-        public static string BudgetSet { get; set; }
-        public static string BudgetFile { get; set; }
-
        
 
         public MainPage()

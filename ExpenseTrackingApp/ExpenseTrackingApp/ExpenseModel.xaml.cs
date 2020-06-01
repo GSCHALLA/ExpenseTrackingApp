@@ -13,26 +13,66 @@ namespace ExpenseTrackingApp.Models
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ExpenseModel : ContentPage
     {
+
+        public string Budget { get; set; }
+
+        public DateTime SelectedDate { get; set; }
         public ExpenseModel()
         {
             InitializeComponent();
+
+
+
+            
+
+
         }
 
-        private async void OnSaveButtonClicked(object sender, EventArgs e)
-        {
-            var expenses = (Expenses)BindingContext;
-            var name = Path.Combine(
-                    Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-                    $"{Path.GetRandomFileName()}.expenses.txt");
-            File.WriteAllText(name , editor.Text);
 
-            await Navigation.PopModalAsync();
+        private  void OnSaveButtonClicked(object sender, EventArgs e)
+        {
+            var expensePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.
+                LocalApplicationData),
+                $"{Path.GetRandomFileName()}.expenses.txt");
+
+
+
+            var expenses = new Expenses
+            {
+
+                Name = nameLabel.Text,
+                Amount = Convert.ToDecimal(amountLabel.Text),
+                DateOfPurchase = SelectedDate,
+                Category = pickerCategory.SelectedItem.ToString()
+                
+            };
+
+
+            File.WriteAllText(expensePath, expenses.toString());
+
+             Navigation.PopModalAsync();
+
+            /*await Navigation.PushModalAsync(new ExpenseEntryPage
+            {
+                
+                Budget= File.ReadAllText
+               ("data/user/0/com.companyname.expensetrackingapp/files/.local/share/ExpenseBudget.txt")
+
+               
+            }); */
+
+        }
+
+        private void OnDeleteButtonClicked(object sender, EventArgs e)
+        {
+            Navigation.PopModalAsync();
+        }
+
+        private void MainDatePicker_DateSelected(object sender, DateChangedEventArgs e)
+        {
+            SelectedDate = e.NewDate;
         }
 
         
-        private void OnCancelButtonClicked(object sender, EventArgs e)
-        {
-
-        }
     }
 }

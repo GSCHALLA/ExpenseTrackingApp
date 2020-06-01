@@ -4,14 +4,18 @@ using System.Text;
 
 namespace ExpenseTrackingApp.Models
 {
-    public enum ExpenseCategory
-    {
-        Travel,
-        Insurance,
-        Food,
-        Utilities,
-        Miscellaneous
+    /* public enum ExpenseCategory
+     {
+         Travel,
+         Insurance,
+         Food,
+         Utilities,
+         Miscellaneous
 
+     }*/
+    public class ExpenseEntryData
+    {
+        public string Budget { get; set; }
     }
 
     public class Expenses
@@ -19,23 +23,16 @@ namespace ExpenseTrackingApp.Models
         public string FileName { get; set; }
         public static decimal Budget { get; set; }
         public string Name { get; set; }
-        public decimal ExpenseAmount { get; set; }
+        public decimal Amount { get; set; }
         public DateTime DateOfPurchase { get; set; }
-        public ExpenseCategory Category { get; set; }
+        public string Category { get; set; }
         public string ImageFile { get; set; }
 
-
-        //public  Expenses(string name , int amount , DateTime dateOfPurchase , ExpenseCategory category )
-        //{
-        //    Name = name;
-        //    Amount = amount;
-        //    DateOfPurchase = dateOfPurchase;
-        //    Category = category;
-
-
-        //}
-
-
+        public string toString()
+        {
+            return $"{Name}\n{Amount}\n{Category}\n{DateOfPurchase}";
+        }
 
     }
 }
+

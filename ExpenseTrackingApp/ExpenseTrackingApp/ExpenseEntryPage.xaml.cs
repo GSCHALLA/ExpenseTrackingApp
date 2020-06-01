@@ -4,17 +4,18 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using ExpenseTrackingApp.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace ExpenseTrackingApp.Models
+namespace ExpenseTrackingApp
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ExpenseEntryPage : ContentPage
     {
 
         public string Budget { get; set; }
+  
         public ExpenseEntryPage()
         {
             InitializeComponent();
@@ -23,19 +24,37 @@ namespace ExpenseTrackingApp.Models
         protected override void OnAppearing()
         {
             BudgetLabel.Text = $"BudgetExpense is {Budget}";
+
+
+
+
+            var expenseDataFiles = Directory.EnumerateFiles(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                "*.expenses.txt").ToList();
+
             var expenses = new List<Expenses>();
-            var files = Directory.EnumerateFiles(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-                "*.expense.txt");
-            foreach (var filename in files)
+
+
+            foreach (var dataFile in expenseDataFiles)
             {
+                /*//fruits \n 10 \n food
+                File.Delete(dataFile);
+                continue;*/
+                var data = File.ReadAllText(dataFile);
+                string[] dataSplit = data.Split('\n');
+
+                
                 var expense = new Expenses
                 {
-                    Name = File.ReadAllText(filename),
+                    Name = dataSplit[0],
+                    Amount = Convert.ToDecimal(dataSplit[1]), 
+                    Category = dataSplit[2],
+                     DateOfPurchase = Convert.ToDateTime(dataSplit[3])
                 };
 
                 expenses.Add(expense);
             }
 
+            listview.ItemsSource = expenses;
         }
 
 

@@ -8,11 +8,6 @@ namespace ExpenseTrackingApp
 {
     public partial class App : Application
     {
-        public static string BudgetFile { get; internal set; }
-        public static string IsBudgetSet { get; set; }
-        public static string BudgetCost { get; set; }
-        public static  bool SetInitialBudget { get; set; }
-
 
         public App()
         {
@@ -22,9 +17,14 @@ namespace ExpenseTrackingApp
                 (Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
                "ExpenseBudget.txt");
 
-            if(File.Exists(expenseBudgetPath))
+            //File.Delete(expenseBudgetPath);
+
+           
+
+            if (File.Exists(expenseBudgetPath))
             {
                 var budget = File.ReadAllText(expenseBudgetPath);
+                
                 MainPage = new ExpenseEntryPage
                 {
                     Budget = budget
