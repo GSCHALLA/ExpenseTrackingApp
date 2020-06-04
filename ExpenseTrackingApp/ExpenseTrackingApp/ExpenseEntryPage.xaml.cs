@@ -39,7 +39,9 @@ namespace ExpenseTrackingApp
                 /*//fruits \n 10 \n food
                 File.Delete(dataFile);
                 continue;*/
+               
                 var data = File.ReadAllText(dataFile);
+                Console.WriteLine(data);
                 string[] dataSplit = data.Split('\n');
 
                 
