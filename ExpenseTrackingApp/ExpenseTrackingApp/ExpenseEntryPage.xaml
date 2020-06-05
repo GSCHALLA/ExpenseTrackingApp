@@ -14,12 +14,15 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
 
-                    <Button Text="Add Expenses" FontSize="16" TextColor="white" BackgroundColor="Blue" Clicked="OnAddExpensesClicked" Grid.Row="1"/>
-                    <Label x:Name="BudgetLabel"  TextColor="Black" FontSize="25" Grid.Row="2"/>
+                    <Button Text="Add Expenses" FontSize="25" TextColor="white" BackgroundColor="Blue" Clicked="OnAddExpensesClicked" Grid.Row="1"/>
+                    <Label x:Name="BudgetLabel"  TextColor="Black" FontSize="Large" Grid.Row="2"/>
 
-                    <Label Text="Expenses List :-" FontSize="30" TextColor="Red" Grid.Row="3"/>
+                    <Label x:Name="RemainingAmountLabel" TextColor="Black" FontSize="Large" Grid.Row="3"/>
+
+                    <Label Text="Expenses List :-" FontSize="30" TextColor="Red" Grid.Row="4"/>
 
                     <!--<ListView x:Name="listView" Grid.Row="2"
                   Margin="20">
@@ -30,10 +33,10 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>-->
-                    <ListView x:Name="listview" Grid.Row="4" RowHeight="151">
+                    <ListView x:Name="listview" Grid.Row="5" RowHeight="200">
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <ViewCell>
+                                <ViewCell Height="180">
                                     <Frame OutlineColor="YellowGreen"  HeightRequest="1000" BackgroundColor="White" 
                                         Padding="1"  >
                                             <StackLayout Orientation="Vertical"  VerticalOptions="FillAndExpand">
@@ -43,7 +46,7 @@
                                                 Text="{x:Binding Amount}" FontSize="Large" TextColor="Black"/>
 
                                                 <StackLayout Orientation="Horizontal"  VerticalOptions="FillAndExpand">
-                                                <Image Source="https://static.thenounproject.com/png/1295369-200.png"/>
+                                                <Image Source="{x:Binding CategoryIcon}"/>
                                                 <Label Text="{x:Binding Category}" FontSize="Large" TextColor="Black"/>
                                                 </StackLayout>
 

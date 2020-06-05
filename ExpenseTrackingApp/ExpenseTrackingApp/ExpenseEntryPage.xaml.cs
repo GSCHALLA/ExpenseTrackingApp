@@ -23,11 +23,9 @@ namespace ExpenseTrackingApp
 
         protected override void OnAppearing()
         {
+            decimal totalSum = 0;
             BudgetLabel.Text = $"BudgetExpense is {Budget}";
-
-
-
-
+            
             var expenseDataFiles = Directory.EnumerateFiles(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
                 "*.expenses.txt").ToList();
 
@@ -35,26 +33,31 @@ namespace ExpenseTrackingApp
 
 
             foreach (var dataFile in expenseDataFiles)
-            {
-                /*//fruits \n 10 \n food
-                File.Delete(dataFile);
+            {               
+               /* File.Delete(dataFile);
                 continue;*/
                
                 var data = File.ReadAllText(dataFile);
-                Console.WriteLine(data);
+                //Console.WriteLine(data);
                 string[] dataSplit = data.Split('\n');
 
-                
+
                 var expense = new Expenses
                 {
                     Name = dataSplit[0],
-                    Amount = Convert.ToDecimal(dataSplit[1]), 
+                    Amount = Convert.ToDecimal(dataSplit[1]),
                     Category = dataSplit[2],
-                     DateOfPurchase = Convert.ToDateTime(dataSplit[3])
+                    DateOfPurchase = Convert.ToDateTime(dataSplit[3]),
+                    CategoryIcon = Expenses.CATEGORY_URL_MAP[dataSplit[2]]
                 };
 
                 expenses.Add(expense);
+                totalSum = totalSum + expense.Amount;
             }
+
+            decimal remainingAmount = Convert.ToDecimal(Budget) - totalSum;
+
+            RemainingAmountLabel.Text = $"Remaining Amount is {remainingAmount}";
 
             listview.ItemsSource = expenses;
         }

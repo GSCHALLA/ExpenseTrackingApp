@@ -23,20 +23,21 @@ public class Expenses
     public static string TRAVEL = "TRAVEL";
     public static string INSURANCE = "INSURANCE";
     public static string UTILITIES = "UTILITIES";
-    public static string MISC = "Miscellaneous";
+    public static string MISCELLANEOUS = "MISCELLANEOUS";
 
     public static List<string> CATEGORIES = new List<string>()
     {
-        FOOD,TRAVEL,INSURANCE,UTILITIES,MISC
+        FOOD, TRAVEL, INSURANCE, UTILITIES, MISCELLANEOUS
     };
 
 
-    public Dictionary<String, String> CATEGORY_URL_MAP = new Dictionary<String, String>()
+    public static Dictionary<String, String> CATEGORY_URL_MAP = new Dictionary<String, String>()
         {
-            { "Food", "" },
-            { "Travel", "" },
-            { "Insurance", "" },
-            {"Utilities" , "" },
+            { FOOD, "https://static.thenounproject.com/png/1295369-200.png" },
+            { TRAVEL, "https://static.thenounproject.com/png/2079053-200.png" },
+            { INSURANCE, "https://static.thenounproject.com/png/2093989-200.png" },
+            { UTILITIES , "https://static.thenounproject.com/png/2035509-200.png" },
+            { MISCELLANEOUS, "https://static.thenounproject.com/png/3072734-200.png"}
         };
 
         public string FileName { get; set; }
@@ -45,6 +46,7 @@ public class Expenses
         public decimal Amount { get; set; }
         public DateTime DateOfPurchase { get; set; }
         public string Category { get; set; }
+        public string CategoryIcon { get; set; }
         public string ImageFile { get; set; }
 
 

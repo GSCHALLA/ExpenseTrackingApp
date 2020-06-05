@@ -23,12 +23,6 @@ namespace ExpenseTrackingApp.Models
 
             pickerCategory.ItemsSource = Expenses.CATEGORIES;
 
-
-
-
-
-
-
         }
 
 
