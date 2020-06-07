@@ -57,7 +57,7 @@ namespace ExpenseTrackingApp
 
             decimal remainingAmount = Convert.ToDecimal(Budget) - totalSum;
 
-            RemainingAmountLabel.Text = $"Remaining Amount is {remainingAmount}";
+            RemainingAmountLabel.Text = $"Remaining Budget is {remainingAmount}";
 
             listview.ItemsSource = expenses;
         }

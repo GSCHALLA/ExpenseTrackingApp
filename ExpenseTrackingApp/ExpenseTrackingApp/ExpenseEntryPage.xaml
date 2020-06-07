@@ -33,28 +33,21 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>-->
-                    <ListView x:Name="listview" Grid.Row="5" RowHeight="200">
+                    <ListView x:Name="listview" Grid.Row="5" RowHeight="150">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell Height="180">
-                                    <Frame OutlineColor="YellowGreen"  HeightRequest="1000" BackgroundColor="White" 
+                                    <Frame OutlineColor="LightGray"  HeightRequest="1000" BackgroundColor="White" 
                                         Padding="1"  >
-                                            <StackLayout Orientation="Vertical"  VerticalOptions="FillAndExpand">
-                                                <Label Text="{x:Binding Name}"
-                                                       FontSize="Large" TextColor="Black"/>
-                                                <Label 
-                                                Text="{x:Binding Amount}" FontSize="Large" TextColor="Black"/>
-
-                                                <StackLayout Orientation="Horizontal"  VerticalOptions="FillAndExpand">
-                                                <Image Source="{x:Binding CategoryIcon}"/>
-                                                <Label Text="{x:Binding Category}" FontSize="Large" TextColor="Black"/>
-                                                </StackLayout>
-
-
-                                                <Label Text="{x:Binding DateOfPurchase}" FontSize="Large" TextColor="Black"/>
-
-
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                            <Image Source="{x:Binding CategoryIcon}" WidthRequest="50" HeightRequest="50"/>
+                                            <StackLayout Orientation="Vertical">
+                                                <Label Text="{x:Binding Name, StringFormat='    Name: {0}'}" FontSize="Large" TextColor="Black"/>
+                                                <Label  Text="{x:Binding DateOfPurchase, StringFormat='    Date: {0:MM dd yyyy}'}"  FontSize="Large" TextColor="Black" />
+                                                <Label Text="{x:Binding Amount, StringFormat='    Amount: {0}'}"  FontSize="Large" TextColor="Black"/>
+                                                <Label Text="{x:Binding Category, StringFormat='    Category: {0}'}"  FontSize="Large" TextColor="Black"/>
                                             </StackLayout>
+                                        </StackLayout>
                                     </Frame>
                                 </ViewCell>
                             </DataTemplate>
