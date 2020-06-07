@@ -44,7 +44,7 @@
                                             <StackLayout Orientation="Vertical">
                                                 <Label Text="{x:Binding Name, StringFormat='    Name:       {0}'}" FontSize="Large" TextColor="Black"/>
                                                 <Label  Text="{x:Binding DateOfPurchase, StringFormat='    Date:         {0:MM dd yyyy}'}"  FontSize="Large" TextColor="Black" />
-                                                <Label Text="{x:Binding Amount, StringFormat='    Amount:   {0}$'}"  FontSize="Large" TextColor="Black"/>
+                                                <Label Text="{x:Binding Amount, StringFormat='    Amount:   ${0}'}"  FontSize="Large" TextColor="Black"/>
                                                 <Label Text="{x:Binding Category, StringFormat='    Category:  {0}'}"  FontSize="Large" TextColor="Black"/>
                                             </StackLayout>
                                         </StackLayout>
